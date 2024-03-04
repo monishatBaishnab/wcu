@@ -1,0 +1,162 @@
+$primary_blue: #114A8D;
+$primary_yellow: #FFC758;
+$primary_black: #1C1C1C;
+$primary_white: #FFFFFF;
+
+
+@font-face {
+    font-family: 'Gotham-light';
+    src: url('../font/GothamLight.ttf');
+}
+@font-face {
+    font-family: 'Gotham-bold';
+    src: url('../font/GothamBold.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gotham-light';
+}
+
+
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px;
+    .title-box{
+        .title{
+            font-size: 48px;
+            text-align: center;
+            font-family: 'Gotham-bold';
+            span{
+                font-family: 'Gotham-bold';
+                color: $primary_blue;
+            }
+        }
+    }
+    .content-box{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+        .box-content{
+            height: 348px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            
+            .title{
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                padding: 20px;
+                color: $primary_white;
+                width: 100%;
+                background-image: linear-gradient(to bottom, rgba(0,0,0,.0) 20%, rgba(0,0,0,.7) 80%);
+                h3{
+                    font-size: 26px;
+                    font-family: 'Gotham-bold';
+                    text-align: center;
+                    transition: .5s all;
+                    span{
+                        color: $primary_yellow;
+                        font-family: 'Gotham-bold';
+                    }
+                }
+            }
+            .details{
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                margin: 20px 0;
+                width: 0;
+                height: 0;
+                backdrop-filter: blur(10px);
+                background-color: rgba($color: $primary_blue, $alpha: .8);
+                text-align: center;
+                color: white;
+                border-radius: 4px;
+                transition: .5s all;
+                .wraper{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    visibility: hidden;
+                    opacity: 0;
+                    margin-top: 20px;
+                    transition: .3s all;
+                    transition-delay: 0s;
+                    h3{
+                        font-size: 26px;
+                        font-family: 'Gotham-bold';
+                        text-align: center;
+                        span{
+                            color: $primary_yellow;
+                            font-family: 'Gotham-bold';
+                        }
+                    }
+                }
+            }
+            &:hover{
+                .title{
+                    h3{
+                        visibility: hidden;
+                        opacity: 0;
+                    }
+                }
+                .details{
+                    width: 100%;
+                    height: calc(100% - 40px);
+                    padding: 20px;
+                    .wraper{
+                        visibility: visible;
+                        opacity: 1;
+                        margin-top: 0px;
+                        transition: .5s all;
+                        transition-delay: .4s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .container{
+        .content-box{
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .container{
+        .content-box{
+            .box-content{
+                height: 248px;
+                .title{
+                    h3{
+                        font-size: 18px;
+                    }
+                }
+                .details{
+                    .wraper{
+                        h3{
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
